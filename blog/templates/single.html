@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="section featured" aria-label="featured post">
+    <div class="container">
+
+     
+    <div class="blog-card-single">
+              
+                <div>
+                  <img src="{{post.image.url}}"  loading="lazy"
+              alt="Perfection has to do with the end produc" width="800px"></a>
+                  <ul class="card-meta-list">
+               <li > <a href="#" class="card-tag" style="margin-top:20px">By: {{post.author}}</a></li>
+                <li><a href="#" class="card-tag" style="margin-top:20px"> {{post.create_date}}</a></li>
+                
+              </ul>
+                </div>
+           
+              
+
+            <div class="card-content">
+              <h1 style="font-size: 30px; text-align: center">{{post.subtitle}}</h1>
+                <h1 style="text-align: center"> {{post.title}}</h1>
+
+              <ul class="card-meta-list">
+              {% for category in post.category.all %}
+                <li>
+                  <a href="#" class="card-tag">{{category.name}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              <hr>
+              
+              <p class="text">{{post.content}}</p>
+            </div>
+          </div>
+        </li>
+    
+      </ul>
+
+    </div>
+  </section>
+
+{% endblock content %}

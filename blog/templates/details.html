@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="parent">
+    <div class="card">
+      <img src="{{post.image.url}}" alt="">
+    </div>
+    
+    
+    <h1 style="font-size: 50px; text-align: center">{{post.subtitle}}</h1>
+    <p style="font-size: 30px; text-align: center">{{post.title}}</p>
+
+<ul class="card-meta-list">
+    <li>
+      <a href="#" class="card-tag">By| {{post.author}}</a>
+    </li>
+    <li>
+      <a href="#" class="card-tag">{{post.create_date}}</a>
+    </li>
+  {% for category in post.category.all %}
+    <li>
+      <a href="#" class="card-tag">{{category.name}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="card">
+    <p>{{post.content}}</p>
+  </div>
+ 
+  <p id="rcorners1">Rounded corners!</p>
+  
+  
+{% endblock content %}
