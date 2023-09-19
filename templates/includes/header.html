@@ -1,48 +1,55 @@
-
 {% load static %}
 <header class="header section" data-header>
-    <div class="container">
+  <div class="container">
 
-      <a href="#" class="logo">
-        <img src={% static "assets/images/logo.svg" %} width="129" height="40" alt="Blogy logo">
-      </a>
 
-      <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
+    {% if request.user.is_authenticated %}
+    <a class="navbar-username text-white" href="{% url 'blog:index' %}"> <span class="text-danger">Welcome
+        {{request.user.username|title}}</span> </a>
+    {% else %}
+    <a href="#" class="logo">
+      <img src={% static "assets/images/logo.svg" %} width="129" height="40" alt="Blogy logo">
+    </a>
+    {% endif %}
+    <nav class="navbar" data-navbar>
+      <ul class="navbar-list">
 
-          <li class="navbar-item">
-            <a href="{% url "blog:index" %}" class="navbar-link hover:underline" data-nav-link>Home</a>
-          </li>
+        <li class="navbar-item">
+          <a href="{% url "blog:index" %}" class="navbar-link hover:underline" data-nav-link>Home</a>
+        </li>
 
-          <li class="navbar-item">
-            <a href="#" class="navbar-link hover:underline" data-nav-link>Recent Post</a>
-          </li>
+        <li class="navbar-item">
+          <a href="#" class="navbar-link hover:underline" data-nav-link>Recent Post</a>
+        </li>
 
-          <li class="navbar-item">
-            <a href="#" class="navbar-link hover:underline" data-nav-link>About</a>
-          </li>
+        {% if user.is_authenticated %}
+        <li class="navbar-item"><a class="navbar-link hover:underline" href="{% url 'account:logout' %}">Logout</a></li>
+        {% else %}
+        <li class="navbar-item "><a class="navbar-link hover:underline" href="{% url 'account:signup' %}">Register</a>
+        </li>
+        <li class="navbar-item"><a class="navbar-link hover:underline" href="{% url 'account:login' %}">Login</a></li>
+        {% endif %}
 
-        </ul>
-      </nav>
+      </ul>
+    </nav>
 
-      <div class="wrapper">
+    <div class="wrapper">
 
-        <button class="search-btn" aria-label="search" data-search-toggler>
-          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+      <button class="search-btn" aria-label="search" data-search-toggler>
+        <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
 
-          <span class="span">Search</span>
-        </button>
-
-        <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
-          <span class="span one"></span>
-          <span class="span two"></span>
-          <span class="span three"></span>
-        </button>
-
-        <a href="#" class="btn">Join</a>
-
-      </div>
+        <span class="span">Search</span>
+      </button>
+      <button class="text-white mx-2 btn" onclick="myFunction()">Dark on</button>
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <span class="span one"></span>
+        <span class="span two"></span>
+        <span class="span three"></span>
+      </button>
 
     </div>
-  </header>
- 
+    <br>
+
+
+  </div>
+</header>

@@ -57,4 +57,10 @@ const toggleSearchBar = function () {
 }
 
 addEventOnElem(searchTogglers, "click", toggleSearchBar);
-// like
+
+// change theam
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
+
