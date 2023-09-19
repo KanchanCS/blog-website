@@ -1,0 +1,14 @@
+{% extends "simple.html" %}
+{% load static %}
+{% block content %}
+  
+
+    <h1>Login</h4>
+<form class="signup" method="post">
+    {% csrf_token %}
+    {{forms}}
+    <input type="submit" value="Login">
+    <p class="css">Not a member <a  href="{% url 'account:signup' %}">Signup now</a></p>
+</form>
+
+{% endblock %}
