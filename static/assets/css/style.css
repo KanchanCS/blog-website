@@ -1263,7 +1263,7 @@ input[type="submit"]:hover {
 }
 
 /* Set a grey background color and center the text of the "sign in" section */
-body{
+.simple{
   background-color: #85898f;
 }
 .signin {
