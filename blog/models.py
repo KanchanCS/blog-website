@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from django_comments.moderation import CommentModerator, moderator
 
 # Create your models here.
 
@@ -22,7 +23,15 @@ class Post(models.Model):
     category = models.ManyToManyField(Category)
     image = models.ImageField(upload_to='images/%d-%M-%Y/', blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
+    enable_comment = models.BooleanField(default=True)
 
 
-    def __str__(self):
+    def __str__(self): #type ignore
         return self.subtitle
+
+
+class PostCommentModerator(CommentModerator):
+    enable_field = "enable_comment"
+
+
+moderator.register(Post, PostCommentModerator)

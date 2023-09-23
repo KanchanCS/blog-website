@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load comments %}
 {% block content %}
 
 <section class="section featured" aria-label="featured post">
@@ -8,17 +9,14 @@
 
     <div class="blog-card-single">
 
-      <div >
+      <div>
         <img src="{{post.image.url}}" loading="lazy" alt="Perfection has to do with the end produc" width="800px"></a>
         <ul class="card-meta-list">
           <li> <a href="#" class="card-tag" style="margin-top:20px">By: {{post.author}}</a></li>
           <li><a href="#" class="card-tag" style="margin-top:20px"> {{post.create_date}}</a></li>
-
+          
         </ul>
       </div>
-
-
-
       <div class="card-content">
         <h1 style="font-size: 30px; text-align: center">{{post.subtitle}}</h1>
         <h1 style="text-align: center"> {{post.title}}</h1>
@@ -38,9 +36,52 @@
     </li>
 
     </ul>
-   
+
+    <!--comment-->
+    <a class="codepen-button"><span>Leave a Comment</span></a>
+    {% get_comment_list for post as comments %}
+
+    {% if comments %}
+    <p style="text-color:red" class="h3 center ink text-danger" >{{ comments|length }} Comment{{ comments|length|pluralize }}</p>
+    {% endif %}
+  
+    {% for comment in comments %}
+    <div class="card card-small bg-highlight">
+      <div class="center">
+        <p class="margin-top-0">
+          <strong class="h6">
+            {{ comment.name }} |
+          </strong>
+        
+          <small class="mute">
+            {{ comment.submit_date|date:'d M Y' }}
+          </small>
+        </p>
+      </div>
+      <p class="margin-bottom-0 pre">{{ comment.comment }}</p>
+    </div>
+    {% endfor %}
+    {% if post.enable_comment %}
+    {% get_comment_form for post as form %}
+    <br><br>
+    <table class="card card-small bg-highlight">
+      <form action="{% comment_form_target %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        
+          <td colspan="0">
+            <input  type="submit" name="submit" value="Post">           
+          </td>
+        
+      </form>
+    </table>
+    {% endif %}
+
   </div>
-  <a class="codepen-button"><span>Leave a Comment</span></a>
+
+
+  
+
 </section>
 
 {% endblock content %}
