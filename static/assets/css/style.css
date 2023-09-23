@@ -1129,6 +1129,13 @@ so that it is smooth among other more minor things */
 }
 
 
+.like-button{
+  background-color: red;
+}
+.like_count{
+  background-color: #b9b3b3;
+}
+
 
 
 
