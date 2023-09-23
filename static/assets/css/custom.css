@@ -1,0 +1,84 @@
+* sign page */
+/* Style the form container */
+.signup {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style form fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the login link */
+.css {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.form-control {
+    border: 1px solid gray;
+    border-radius: .2rem !important;
+    padding: 5px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 100%;
+}
+form{
+    padding: 20px;
+}
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #ccc;
+    box-shadow: -4px 8px 10px #ccc;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    width: 500px;
+}
+.simg {
+    object-fit: cover;
+    background: url('/static/assets/images/unsplash.jpg');
+}

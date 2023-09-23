@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Category,Post
+
 # Create your views here.
 def index(request):
     posts = Post.objects.all()
@@ -12,3 +13,8 @@ def single(request, id):
         return render(request, 'single.html', context)
     else:
         return redirect('account:login')
+
+
+    
+            
+            
