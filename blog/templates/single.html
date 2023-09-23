@@ -14,13 +14,29 @@
         <ul class="card-meta-list">
           <li> <a href="#" class="card-tag" style="margin-top:20px">By: {{post.author}}</a></li>
           <li><a href="#" class="card-tag" style="margin-top:20px"> {{post.create_date}}</a></li>
+          <p>
           
-        </ul>
+          <form method="POST" class="">
+                {% csrf_token %}
+
+                {% if user_is_liked %}
+                <li>
+                <button style="margin-top:20px" class="card-tag like-button" type="submit" formaction="{% url 'blog:unlike' post.id %}">Unlike</button>
+                {% else %}
+                <button style="margin-top:20px" class="card-tag like-button" type="submit" formaction="{% url 'blog:like' post.id %}">Like</button>               
+                {% endif %}               
+            </form>
+            <a href="#" class="card-tag like_count" style="margin-top:20px"> {{liked_count}}</a>
+              </li>
+           
+              
+        </p>
+      </ul>
       </div>
       <div class="card-content">
         <h1 style="font-size: 30px; text-align: center">{{post.subtitle}}</h1>
         <h1 style="text-align: center"> {{post.title}}</h1>
-
+        
         <ul class="card-meta-list">
           {% for category in post.category.all %}
           <li>
@@ -72,16 +88,10 @@
           <td colspan="0">
             <input  type="submit" name="submit" value="Post">           
           </td>
-        
       </form>
     </table>
     {% endif %}
-
   </div>
-
-
-  
-
 </section>
 
 {% endblock content %}

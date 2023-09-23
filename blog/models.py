@@ -35,3 +35,12 @@ class PostCommentModerator(CommentModerator):
 
 
 moderator.register(Post, PostCommentModerator)
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    create_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        result = self.post.name + " liked by " + self.user.username
+        return result
