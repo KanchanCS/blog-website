@@ -45,3 +45,12 @@ class Like(models.Model):
         result = self.post.name + " liked by " + self.user.username
         return result
     
+class Subscribe(models.Model):
+    email = models.EmailField(unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.email
+
+    
+    
