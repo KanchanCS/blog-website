@@ -44,3 +44,4 @@ class Like(models.Model):
     def __str__(self):
         result = self.post.name + " liked by " + self.user.username
         return result
+    
